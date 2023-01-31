@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DataStatistik.Models.data_statistik_saved>
+
+@{
+    ViewData["title"] = "Transfer data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="mt-5">Generate Data</h2>
+<hr />
+
+<form asp-action="Generate" asp-antiforgery="true" id="non" method="post">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">From</span>
+                <input name="from" type="date" value="@ViewData["CurrentFilter"]" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Until</span>
+                <input name="until" type="date" value="@ViewData["CurrentFilters"]" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <button name="btnsubmit" type="submit" value="Generate" class="btn btn-sm btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Generate</button>
+    <input name="btnsubmit" type="submit" value="Search" class="btn btn-sm btn-success fw-bold" style="margin-left:10px;">
+</form>
+
+<div style="overflow-x:auto; margin-top:10px;">
+    <table class="table table-bordered" border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Period)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Province)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Frequency)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Volume)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Value)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Period)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Province)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Frequency)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Volume)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
